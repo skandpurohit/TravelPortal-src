@@ -1,158 +1,658 @@
-Name:             release-94244f-todo-app-748c8fbb44-2z58v
-Namespace:        todo-app
-Priority:         0
-Service Account:  login-sa
-Node:             workload-vsphere-vks1-node-pool-1-5td8p-d9lc5-9llrf/172.30.0.37
-Start Time:       Sun, 16 Aug 2026 23:21:28 +0000
-Labels:           app.kubernetes.io/instance=release-94244f
-                  app.kubernetes.io/managed-by=Helm
-                  app.kubernetes.io/name=todo-app
-                  app.kubernetes.io/version=1.16.0
-                  harness.io/release-name=release-94244f
-                  helm.sh/chart=todo-app-0.1.0
-                  pod-template-hash=748c8fbb44
-                  topology.kubernetes.io/zone=zone-1
-Annotations:      vault.hashicorp.com/agent-inject: true
-                  vault.hashicorp.com/agent-inject-secret-config.txt: secret/data/ns01/login-secret
-                  vault.hashicorp.com/agent-inject-status: injected
-                  vault.hashicorp.com/auth-path: auth/kubernetes-w01-sup_ns01-workload-vsphere-vks1
-                  vault.hashicorp.com/role: w01-sup_ns01-workload-vsphere-vks1
-Status:           Pending
-IP:               240.0.3.32
-IPs:
-  IP:           240.0.3.32
-Controlled By:  ReplicaSet/release-94244f-todo-app-748c8fbb44
-Init Containers:
-  vault-agent-init:
-    Container ID:  containerd://874a051f9abd0e63a242875bc5a3404479f5002b5a51b56a754dc2b374265a9f
-    Image:         projects.packages.broadcom.com/vsphere/iaas/secret-store-service/9.1.0.0100/secret-store-service@sha256:c5f1a7f8c9f3dca295e39c0af92f00d38b29e48ea1ef1bffd66ce5058ddd9840
-    Image ID:      projects.packages.broadcom.com/vsphere/iaas/secret-store-service/9.1.0.0100/secret-store-service@sha256:c5f1a7f8c9f3dca295e39c0af92f00d38b29e48ea1ef1bffd66ce5058ddd9840
-    Port:          <none>
-    Host Port:     <none>
-    Command:
-      /bin/sh
-      -ec
-    Args:
-      echo ${VAULT_CONFIG?} | base64 -d > /home/vault/config.json && vault agent -config=/home/vault/config.json
-    State:          Running
-      Started:      Sun, 16 Aug 2026 23:21:31 +0000
-    Ready:          False
-    Restart Count:  0
-    Limits:
-      cpu:     500m
-      memory:  128Mi
-    Requests:
-      cpu:     250m
-      memory:  64Mi
-    Environment:
-      NAMESPACE:         todo-app (v1:metadata.namespace)
-      HOST_IP:            (v1:status.hostIP)
-      POD_IP:             (v1:status.podIP)
-      VAULT_LOG_LEVEL:   info
-      VAULT_LOG_FORMAT:  standard
-      VAULT_CONFIG:      eyJhdXRvX2F1dGgiOnsibWV0aG9kIjp7InR5cGUiOiJrdWJlcm5ldGVzIiwibW91bnRfcGF0aCI6ImF1dGgva3ViZXJuZXRlcy13MDEtc3VwX25zMDEtd29ya2xvYWQtdnNwaGVyZS12a3MxIiwiY29uZmlnIjp7InJvbGUiOiJ3MDEtc3VwX25zMDEtd29ya2xvYWQtdnNwaGVyZS12a3MxIiwidG9rZW5fcGF0aCI6Ii92YXIvcnVuL3NlY3JldHMva3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC90b2tlbiJ9fSwic2luayI6W3sidHlwZSI6ImZpbGUiLCJjb25maWciOnsicGF0aCI6Ii9ob21lL3ZhdWx0Ly52YXVsdC10b2tlbiJ9fV19LCJleGl0X2FmdGVyX2F1dGgiOnRydWUsInBpZF9maWxlIjoiL2hvbWUvdmF1bHQvLnBpZCIsInZhdWx0Ijp7ImFkZHJlc3MiOiJodHRwczovL3NlY3JldC1zdG9yZS1zZXJ2aWNlLnZrcy12YXVsdC1pbmplY3Rvci5zdmMuY2x1c3Rlci5sb2NhbDo4MjAwIn0sInRlbXBsYXRlIjpbeyJkZXN0aW5hdGlvbiI6Ii92YXVsdC9zZWNyZXRzL2NvbmZpZy50eHQiLCJjb250ZW50cyI6Int7IHdpdGggc2VjcmV0IFwic2VjcmV0L2RhdGEvbnMwMS9sb2dpbi1zZWNyZXRcIiB9fXt7IHJhbmdlICRrLCAkdiA6PSAuRGF0YSB9fXt7ICRrIH19OiB7eyAkdiB9fVxue3sgZW5kIH19e3sgZW5kIH19IiwibGVmdF9kZWxpbWl0ZXIiOiJ7eyIsInJpZ2h0X2RlbGltaXRlciI6In19In1dLCJ0ZW1wbGF0ZV9jb25maWciOnsiZXhpdF9vbl9yZXRyeV9mYWlsdXJlIjp0cnVlfX0=
-    Mounts:
-      /home/vault from home-init (rw)
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v26r5 (ro)
-      /vault/secrets from vault-secrets (rw)
-Containers:
-  todo-app:
-    Container ID:
-    Image:          design-libraries-docker-dev-local.packages.vcfd.broadcom.net/todoservice:qDTjUgniQf22CuVQgIyO5g
-    Image ID:
-    Port:           7540/TCP (http)
-    Host Port:      0/TCP (http)
-    State:          Waiting
-      Reason:       PodInitializing
-    Ready:          False
-    Restart Count:  0
-    Liveness:       http-get http://:http/ delay=0s timeout=1s period=10s #success=1 #failure=3
-    Readiness:      http-get http://:http/ delay=0s timeout=1s period=10s #success=1 #failure=3
-    Environment:
-      TODO_PASSWORD:  <set to the key 'todopassword' in secret 'release-94244f-todo-app-auth-15'>  Optional: false
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v26r5 (ro)
-      /vault/secrets from vault-secrets (rw)
-  vault-agent:
-    Container ID:
-    Image:         projects.packages.broadcom.com/vsphere/iaas/secret-store-service/9.1.0.0100/secret-store-service@sha256:c5f1a7f8c9f3dca295e39c0af92f00d38b29e48ea1ef1bffd66ce5058ddd9840
-    Image ID:
-    Port:          <none>
-    Host Port:     <none>
-    Command:
-      /bin/sh
-      -ec
-    Args:
-      echo ${VAULT_CONFIG?} | base64 -d > /home/vault/config.json && vault agent -config=/home/vault/config.json
-    State:          Waiting
-      Reason:       PodInitializing
-    Ready:          False
-    Restart Count:  0
-    Limits:
-      cpu:     500m
-      memory:  128Mi
-    Requests:
-      cpu:     250m
-      memory:  64Mi
-    Environment:
-      NAMESPACE:         todo-app (v1:metadata.namespace)
-      HOST_IP:            (v1:status.hostIP)
-      POD_IP:             (v1:status.podIP)
-      VAULT_LOG_LEVEL:   info
-      VAULT_LOG_FORMAT:  standard
-      VAULT_CONFIG:      eyJhdXRvX2F1dGgiOnsibWV0aG9kIjp7InR5cGUiOiJrdWJlcm5ldGVzIiwibW91bnRfcGF0aCI6ImF1dGgva3ViZXJuZXRlcy13MDEtc3VwX25zMDEtd29ya2xvYWQtdnNwaGVyZS12a3MxIiwiY29uZmlnIjp7InJvbGUiOiJ3MDEtc3VwX25zMDEtd29ya2xvYWQtdnNwaGVyZS12a3MxIiwidG9rZW5fcGF0aCI6Ii92YXIvcnVuL3NlY3JldHMva3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC90b2tlbiJ9fSwic2luayI6W3sidHlwZSI6ImZpbGUiLCJjb25maWciOnsicGF0aCI6Ii9ob21lL3ZhdWx0Ly52YXVsdC10b2tlbiJ9fV19LCJleGl0X2FmdGVyX2F1dGgiOmZhbHNlLCJwaWRfZmlsZSI6Ii9ob21lL3ZhdWx0Ly5waWQiLCJ2YXVsdCI6eyJhZGRyZXNzIjoiaHR0cHM6Ly9zZWNyZXQtc3RvcmUtc2VydmljZS52a3MtdmF1bHQtaW5qZWN0b3Iuc3ZjLmNsdXN0ZXIubG9jYWw6ODIwMCJ9LCJ0ZW1wbGF0ZSI6W3siZGVzdGluYXRpb24iOiIvdmF1bHQvc2VjcmV0cy9jb25maWcudHh0IiwiY29udGVudHMiOiJ7eyB3aXRoIHNlY3JldCBcInNlY3JldC9kYXRhL25zMDEvbG9naW4tc2VjcmV0XCIgfX17eyByYW5nZSAkaywgJHYgOj0gLkRhdGEgfX17eyAkayB9fToge3sgJHYgfX1cbnt7IGVuZCB9fXt7IGVuZCB9fSIsImxlZnRfZGVsaW1pdGVyIjoie3siLCJyaWdodF9kZWxpbWl0ZXIiOiJ9fSJ9XSwidGVtcGxhdGVfY29uZmlnIjp7ImV4aXRfb25fcmV0cnlfZmFpbHVyZSI6dHJ1ZX19
-    Mounts:
-      /home/vault from home-sidecar (rw)
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v26r5 (ro)
-      /vault/secrets from vault-secrets (rw)
-Conditions:
-  Type                        Status
-  PodReadyToStartContainers   True
-  Initialized                 False
-  Ready                       False
-  ContainersReady             False
-  PodScheduled                True
-Volumes:
-  kube-api-access-v26r5:
-    Type:                    Projected (a volume that contains injected data from multiple sources)
-    TokenExpirationSeconds:  3607
-    ConfigMapName:           kube-root-ca.crt
-    Optional:                false
-    DownwardAPI:             true
-  home-init:
-    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
-    Medium:     Memory
-    SizeLimit:  <unset>
-  home-sidecar:
-    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
-    Medium:     Memory
-    SizeLimit:  <unset>
-  vault-secrets:
-    Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
-    Medium:      Memory
-    SizeLimit:   <unset>
-QoS Class:       Burstable
-Node-Selectors:  <none>
-Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Events:
-  Type    Reason     Age    From               Message
-  ----    ------     ----   ----               -------
-  Normal  Scheduled  3m44s  default-scheduler  Successfully assigned todo-app/release-94244f-todo-app-748c8fbb44-2z58v to workload-vsphere-vks1-node-pool-1-5td8p-d9lc5-9llrf
-  Normal  Pulled     3m42s  kubelet            spec.initContainers{vault-agent-init}: Container image "projects.packages.broadcom.com/vsphere/iaas/secret-store-service/9.1.0.0100/secret-store-service@sha256:c5f1a7f8c9f3dca295e39c0af92f00d38b29e48ea1ef1bffd66ce5058ddd9840" already present on machine and can be accessed by the pod
-  Normal  Created    3m41s  kubelet            spec.initContainers{vault-agent-init}: Container created
-  Normal  Started    3m41s  kubelet            spec.initContainers{vault-agent-init}: Container started
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"tekton.dev/v1","kind":"Task","metadata":{"annotations":{"tekton.dev/categories":"Image Build, Security","tekton.dev/displayName":"Buildpacks phases","tekton.dev/pipelines.minVersion":"0.62.0","tekton.dev/platforms":"linux/amd64","tekton.dev/tags":"image-build"},"labels":{"app.kubernetes.io/version":"0.3"},"name":"buildpacks-phases","namespace":"cicd"},"spec":{"description":"The Buildpacks-Phases task builds source into a container image and pushes it to a registry, using Cloud Native Buildpacks - https://buildpacks.io/. This task separately calls the aspects of the Cloud Native Buildpacks lifecycle, to provide increased security via container isolation.\nWhen the builder image includes extensions (= Dockerfiles), then this task will execute them. That allows to by example install packages, rpm, etc and to customize the build process according to your needs.\nThis task supports the Platform spec 0.13: https://github.com/buildpacks/spec/blob/platform/v0.13/platform.md","params":[{"default":"","description":"Reference to the current build image in an OCI registry (if used \u003ckaniko-dir\u003e must be provided)","name":"CNB_BUILD_IMAGE"},{"description":"The Builder image which includes the lifecycle tool, the buildpacks and metadata.","name":"CNB_BUILDER_IMAGE"},{"default":"","description":"Reference to a cache image in an OCI registry (if no cache workspace is provided).","name":"CNB_CACHE_IMAGE"},{"default":[],"description":"Environment variables to set during _build-time_.","name":"CNB_ENV_VARS","type":"array"},{"default":"silent","description":"Control the lifecycle's execution according to the mode silent, warn, error for the experimental features.","name":"CNB_EXPERIMENTAL_MODE"},{"default":"","description":"The group ID of the builder image user.","name":"CNB_GROUP_ID"},{"default":"","description":"List of registries separated by a comma having a self-signed certificate where TLS verification will be skipped.","name":"CNB_INSECURE_REGISTRIES"},{"default":"/layers","description":"Path to layers directory","name":"CNB_LAYERS_DIR"},{"default":"info","description":"Logging level values info, warning, error, debug","name":"CNB_LOG_LEVEL"},{"default":"0.13","description":"Buildpack Platform API supported by the Tekton task","name":"CNB_PLATFORM_API_SUPPORTED"},{"default":"","description":"User's Buildpack Platform API","name":"CNB_PLATFORM_API"},{"default":"/platform","description":"Path to the platform directory","name":"CNB_PLATFORM_DIR"},{"default":"","description":"Default process type to set in the exported image","name":"CNB_PROCESS_TYPE"},{"default":"","description":"Reference to an image which is packaging the application runtime to be launched.","name":"CNB_RUN_IMAGE"},{"default":false,"description":"Do not restore SBOM layer from previous image","name":"CNB_SKIP_LAYERS"},{"default":"","description":"The user ID of the builder image user.","name":"CNB_USER_ID"},{"description":"The name of the container image for your application.","name":"APP_IMAGE"},{"default":"","description":"A subpath within the `source` input where the source to build is located.","name":"SOURCE_SUBPATH"},{"default":"","description":"Additional tag to apply to the exported image","name":"TAGS"},{"default":"/tekton/home","description":"Absolute path to the user's home directory.","name":"USER_HOME"},{"default":"quay.io/halkyonio/skopeo-jq:0.1.3@sha256:1b3d21ad541227dc9d3e793d18cef9eb00a969c0c01eb09cab88997bc63680c6","description":"Image packaging tools like skopeo and jq to inspect the builder images","name":"INSPECT_TOOLS_IMAGE"}],"results":[{"description":"The digest of the built `APP_IMAGE`.","name":"APP_IMAGE_DIGEST"}],"stepTemplate":{"env":[{"name":"CNB_EXPERIMENTAL_MODE","value":"$(params.CNB_EXPERIMENTAL_MODE)"},{"name":"HOME","value":"$(params.USER_HOME)"}]},"steps":[{"env":[{"name":"PARAM_VERBOSE","value":"$(params.CNB_LOG_LEVEL)"},{"name":"PARAM_BUILDER_IMAGE","value":"$(params.CNB_BUILDER_IMAGE)"},{"name":"PARAM_CNB_PLATFORM_API","value":"$(params.CNB_PLATFORM_API)"},{"name":"PARAM_CNB_PLATFORM_API_SUPPORTED","value":"$(params.CNB_PLATFORM_API_SUPPORTED)"},{"name":"DOCKER_CONFIG","value":"/tekton/home/.docker"}],"image":"$(params.INSPECT_TOOLS_IMAGE)","name":"get-labels-and-env","onError":"stopAndFail","results":[{"description":"UID of the user specified in the Builder image","name":"UID"},{"description":"GID of the user specified in the Builder image","name":"GID"},{"description":"Extensions labels: io.buildpacks.extension.layers defined in the Builder image","name":"EXTENSION_LABELS"},{"description":"The CNB_PLATFORM_API to be used by lifecycle and verified against the one supported by this task","name":"CNB_PLATFORM_API"}],"script":"#!/usr/bin/env bash\nset -eu\n\nif [ \"${PARAM_VERBOSE}\" = \"debug\" ]; then\n  set -x\nfi\n\necho \"Creating the path for docker..\"\n\nmkdir -p /tekton/home/.docker\n\necho \"--\u003e Copying dockerconfig credentials: $(workspaces.dockerconfig.path)\"\nls -Rlrta \"$(workspaces.dockerconfig.path)\"\n\necho \"================\"\n\nif [ -f \"$(workspaces.dockerconfig.path)/.dockerconfigjson\" ]; then\n  cp \"$(workspaces.dockerconfig.path)/.dockerconfigjson\" \"${DOCKER_CONFIG}/config.json\"\nelif [ -f \"$(workspaces.dockerconfig.path)/config.json\" ]; then\n  cp \"$(workspaces.dockerconfig.path)/config.json\" \"${DOCKER_CONFIG}/config.json\"\nelse\n  echo \"ERROR: Harbor registry credentials were not mounted.\"\n  exit 1\nfi\n\necho \"# Check if registry creds docker file has been mounted from a secret\"\n\nif [[ -f \"$HOME/.docker/config.json\" ]]; then\n  printf \"%s\\n\" \"The docker config.json file exists !\"\nelse\n  printf \"%s\\n\" \"!!!!! Warning: No registry credentials file exist. So it could be possible that the task will fail due to docker rate limit, etc !!!\"\nfi\n\nprintf \"%s\\n\" \"Remove the @sha from the image as not supported by skopeo to inspect an image\"\n\nCLEANED_IMAGE=\"${PARAM_BUILDER_IMAGE%@*}\"\n\nEXT_LABEL_1=\"io.buildpacks.extension.layers\"\nEXT_LABEL_2=\"io.buildpacks.buildpack.order-extensions\"\nBUILDER_LABEL=\"io.buildpacks.builder.metadata\"\n\nIMG_MANIFEST=$(\n  skopeo inspect \\\n    --authfile \"$HOME/.docker/config.json\" \\\n    \"docker://${CLEANED_IMAGE}\"\n)\n\n#\n# The following test should be reviewed as:\n#\n# 1) we get from non ubi images a {} value as you can see hereafter\n#    \"io.buildpacks.extension.layers\": \"{}\",\n#\n# 2) Do we have to check the content of this label too ?\n#    \"io.buildpacks.buildpack.order-extensions\": \"null\",\n#\n\nIMG_LABELS=$(echo \"$IMG_MANIFEST\" | jq -e '.Labels')\n\nif [[ $(echo \"$IMG_LABELS\" | jq -r '.[\"'${BUILDER_LABEL}'\"]') != \"{}\" ]]; then\n\n  printf \"%s\\n\" \"## The builder image ${PARAM_BUILDER_IMAGE} includes the label: \\\"${BUILDER_LABEL}\\\" :\"\n\n  builderLabel=$(echo -n \"$IMG_LABELS\" | jq -r '.[\"'${BUILDER_LABEL}'\"]')\n\n  platforms=(\n    $(echo \"$builderLabel\" | jq -r '.lifecycle.apis.platform.supported')\n  )\n\n  printf \"%s\\n\" \"Lifecycle platforms API supported: ${platforms[@]}\"\n\n  CNB_PLATFORM_API=${PARAM_CNB_PLATFORM_API:-$PARAM_CNB_PLATFORM_API_SUPPORTED}\n\n  echo \"Platform API selected: $CNB_PLATFORM_API\"\n\n  printf \"%s\\n\" \"Platform API supported by this task: $PARAM_CNB_PLATFORM_API_SUPPORTED\"\n\n  if [[ \"${platforms[@]}\" =~ \"$CNB_PLATFORM_API\" \u0026\u0026\n        \"$CNB_PLATFORM_API\" == \"$PARAM_CNB_PLATFORM_API_SUPPORTED\" ]]; then\n\n    echo -n \"$CNB_PLATFORM_API\" \u003e \"$(step.results.CNB_PLATFORM_API.path)\"\n\n    printf \"%s\\n\" \"$CNB_PLATFORM_API is in the list of the platform supported by lifecycle like also this Tekton task :-)\"\n\n  else\n\n    echo \"$PARAM_CNB_PLATFORM_API is not in the list of the supported platform by lifecycle or is not supported by this tekton task: ${PARAM_CNB_PLATFORM_API_SUPPORTED} !\"\n\n    exit 1\n  fi\nfi\n\nif [[ $(echo \"$IMG_LABELS\" | jq -r '.[\"'${EXT_LABEL_1}'\"]') != \"{}\" ]]; then\n\n  echo \"## The builder image ${PARAM_BUILDER_IMAGE} includes some extensions as the extension label \\\"${EXT_LABEL_1}\\\" is NOT empty:\"\n\n  echo -n \"$IMG_LABELS\" |\n    jq -r '.[\"'${EXT_LABEL_1}'\"]' |\n    tee \"$(step.results.EXTENSION_LABELS.path)\"\n\n  echo \"\"\n\nelse\n\n  echo \"## The builder image ${PARAM_BUILDER_IMAGE} dot not include extensions as the extension label \\\"${EXT_LABEL_1}\\\" is empty !\"\n\n  echo -n \"empty\" |\n    tee \"$(step.results.EXTENSION_LABELS.path)\"\nfi\n\nCNB_USER_ID=$(\n  echo \"$IMG_MANIFEST\" |\n    jq -r '.Env' |\n    jq -r '.[] | select(test(\"^CNB_USER_ID=\"))' |\n    cut -d '=' -f 2\n)\n\nCNB_GROUP_ID=$(\n  echo \"$IMG_MANIFEST\" |\n    jq -r '.Env' |\n    jq -r '.[] | select(test(\"^CNB_GROUP_ID=\"))' |\n    cut -d '=' -f 2\n)\n\necho \"## The CNB_USER_ID \u0026 CNB_GROUP_ID defined within the builder image: ${PARAM_BUILDER_IMAGE} are:\"\n\necho -n \"$CNB_USER_ID\" |\n  tee \"$(step.results.UID.path)\"\n\necho \"\"\n\necho -n \"$CNB_GROUP_ID\" |\n  tee \"$(step.results.GID.path)\"\n"},{"args":["--env-vars","$(params.CNB_ENV_VARS[*])"],"env":[{"name":"CNB_USER_ID","value":"$(steps.get-labels-and-env.results.UID)"},{"name":"CNB_GROUP_ID","value":"$(steps.get-labels-and-env.results.GID)"}],"image":"registry.access.redhat.com/ubi8/ubi-minimal@sha256:b2a1bec3dfbc7a14a1d84d98934dfe8fdde6eb822a211286601cf109cbccb075","name":"prepare","script":"#!/usr/bin/env bash\nset -eu\n\necho \"CNB UID: $CNB_USER_ID\"\necho \"CNB GID: $CNB_GROUP_ID\"\n\nif [[ \"$(workspaces.cache.bound)\" == \"true\" ]]; then\n  echo \"--\u003e Setting permissions on '$(workspaces.cache.path)'...\"\n  chown -R \"$CNB_USER_ID:$CNB_GROUP_ID\" \"$(workspaces.cache.path)\"\nfi\n\necho \"--\u003e Creating .docker folder\"\nmkdir -p \"/tekton/home/.docker\"\n\nfor path in \\\n  \"/tekton/home\" \\\n  \"/tekton/home/.docker\" \\\n  \"/tekton/creds\" \\\n  \"/layers\" \\\n  \"$(workspaces.source.path)\"; do\n\n  echo \"--\u003e Setting permissions on '$path'...\"\n  chown -R \"$CNB_USER_ID:$CNB_GROUP_ID\" \"$path\"\ndone\n\necho \"--\u003e Parsing additional configuration...\"\n\nparsing_flag=\"\"\nenvs=()\n\nfor arg in \"$@\"; do\n\n  if [[ \"$arg\" == \"--env-vars\" ]]; then\n    echo \"-\u003e Parsing env variables...\"\n    parsing_flag=\"env-vars\"\n\n  elif [[ \"$parsing_flag\" == \"env-vars\" ]]; then\n    envs+=(\"$arg\")\n  fi\n\ndone\n\necho \"--\u003e Processing any environment variables...\"\n\nENV_DIR=\"/platform/env\"\n\necho \"--\u003e Creating 'env' directory: $ENV_DIR\"\nmkdir -p \"$ENV_DIR\"\n\nfor env in \"${envs[@]}\"; do\n\n  IFS='=' read -r key value string \u003c\u003c\u003c \"$env\"\n\n  if [[ \"$key\" != \"\" \u0026\u0026 \"$value\" != \"\" ]]; then\n\n    path=\"${ENV_DIR}/${key}\"\n\n    echo \"--\u003e Writing ${path}...\"\n\n    echo -n \"$value\" \u003e \"$path\"\n  fi\n\ndone\n\necho \"--\u003e Content of $(params.CNB_PLATFORM_DIR)/env\"\nls -la \"$(params.CNB_PLATFORM_DIR)/env\"\n\necho \"--\u003e Show the project cloned within the workspace ...\"\nls -la \"$(workspaces.source.path)/$(params.SOURCE_SUBPATH)\"\n","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"},{"mountPath":"$(params.CNB_PLATFORM_DIR)","name":"platform-dir"}]},{"args":["-log-level=$(params.CNB_LOG_LEVEL)","-layers=$(params.CNB_LAYERS_DIR)","-run-image=$(params.CNB_RUN_IMAGE)","-cache-image=$(params.CNB_CACHE_IMAGE)","-uid=$(steps.get-labels-and-env.results.UID)","-gid=$(steps.get-labels-and-env.results.GID)","-insecure-registry=$(params.CNB_INSECURE_REGISTRIES)","-tag=$(params.TAGS)","-skip-layers=$(params.CNB_SKIP_LAYERS)","$(params.APP_IMAGE)"],"command":["/cnb/lifecycle/analyzer"],"env":[{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"},{"name":"DOCKER_CONFIG","value":"/tekton/home/.docker"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"analyze","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"}]},{"args":["-log-level=$(params.CNB_LOG_LEVEL)","-app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)","-group=/layers/group.toml","-plan=/layers/plan.toml","-layers=$(params.CNB_LAYERS_DIR)","-platform=$(params.CNB_PLATFORM_DIR)"],"command":["/cnb/lifecycle/detector"],"env":[{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"detect","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"},{"mountPath":"$(params.CNB_PLATFORM_DIR)","name":"platform-dir"},{"mountPath":"/tekton/home","name":"tekton-home-dir"}]},{"env":[{"name":"UID","value":"$(steps.get-labels-and-env.results.UID)"},{"name":"GID","value":"$(steps.get-labels-and-env.results.GID)"},{"name":"CNB_LOG_LEVEL","value":"$(params.CNB_LOG_LEVEL)"},{"name":"CNB_BUILD_IMAGE","value":"$(params.CNB_BUILD_IMAGE)"},{"name":"CNB_BUILDER_IMAGE","value":"$(params.CNB_BUILDER_IMAGE)"},{"name":"CNB_CACHE_IMAGE","value":"$(params.CNB_CACHE_IMAGE)"},{"name":"CNB_INSECURE_REGISTRIES","value":"$(params.CNB_INSECURE_REGISTRIES)"},{"name":"CNB_SKIP_LAYERS","value":"$(params.CNB_SKIP_LAYERS)"},{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"restore","script":"#!/usr/bin/env bash\n\nexport BUILD_IMAGE=${CNB_BUILD_IMAGE:-${CNB_BUILDER_IMAGE}}\n\n/cnb/lifecycle/restorer \\\n  -log-level=${CNB_LOG_LEVEL} \\\n  -build-image=${BUILD_IMAGE} \\\n  -group=/layers/group.toml \\\n  -layers=${CNB_LAYERS_DIR} \\\n  -cache-dir=$(workspaces.cache.path) \\\n  -cache-image=${CNB_CACHE_IMAGE} \\\n  -uid=${UID} \\\n  -gid=${GID} \\\n  -insecure-registry=${CNB_INSECURE_REGISTRIES} \\\n  -skip-layers=${CNB_SKIP_LAYERS}\n","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"},{"mountPath":"/kaniko","name":"kaniko-dir"}]},{"args":["-log-level=$(params.CNB_LOG_LEVEL)","-app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)","-generated=/layers/generated","-uid=$(steps.get-labels-and-env.results.UID)","-gid=$(steps.get-labels-and-env.results.GID)","-platform=$(params.CNB_PLATFORM_DIR)"],"command":["/cnb/lifecycle/extender"],"env":[{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"extender","securityContext":{"capabilities":{"add":["SYS_ADMIN","SETFCAP"]},"runAsGroup":0,"runAsUser":0},"volumeMounts":[{"mountPath":"/layers","name":"layers-dir"},{"mountPath":"/kaniko","name":"kaniko-dir"},{"mountPath":"/tekton/home","name":"tekton-home-dir"},{"mountPath":"$(params.CNB_PLATFORM_DIR)","name":"platform-dir"}],"when":[{"input":"$(steps.get-labels-and-env.results.EXTENSION_LABELS)","operator":"notin","values":["empty"]}]},{"args":["-log-level=$(params.CNB_LOG_LEVEL)","-app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)","-layers=$(params.CNB_LAYERS_DIR)","-group=/layers/group.toml","-plan=/layers/plan.toml","-platform=$(params.CNB_PLATFORM_DIR)"],"command":["/cnb/lifecycle/builder"],"env":[{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"build","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"},{"mountPath":"$(params.CNB_PLATFORM_DIR)","name":"platform-dir"},{"mountPath":"/tekton/home","name":"tekton-home-dir"}],"when":[{"input":"$(steps.get-labels-and-env.results.EXTENSION_LABELS)","operator":"in","values":["empty"]}]},{"args":["-log-level=$(params.CNB_LOG_LEVEL)","-app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)","-layers=$(params.CNB_LAYERS_DIR)","-group=/layers/group.toml","-cache-dir=$(workspaces.cache.path)","-cache-image=$(params.CNB_CACHE_IMAGE)","-report=/layers/report.toml","-process-type=$(params.CNB_PROCESS_TYPE)","-uid=$(steps.get-labels-and-env.results.UID)","-gid=$(steps.get-labels-and-env.results.GID)","-insecure-registry=$(params.CNB_INSECURE_REGISTRIES)","$(params.APP_IMAGE)"],"command":["/cnb/lifecycle/exporter"],"env":[{"name":"CNB_PLATFORM_API","value":"$(steps.get-labels-and-env.results.CNB_PLATFORM_API)"},{"name":"DOCKER_CONFIG","value":"/tekton/home/.docker"}],"image":"$(params.CNB_BUILDER_IMAGE)","imagePullPolicy":"Always","name":"export","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"}]},{"image":"registry.access.redhat.com/ubi8/python-311@sha256:43605cb2491ef2297a7acf4b4bf0b7f54f0c91b96daf12ae41c49cc7f192b153","name":"results","script":"#!/usr/bin/env python3\n\nimport tomllib\nimport os\n\nprint(\"======================================\")\nprint(\"Reading image digest from report.toml\")\nprint(\"======================================\")\n\nwith open(\"/layers/report.toml\", \"rb\") as f:\n    data = tomllib.load(f)\n\nimg_data = data.get(\"image\", {})\n\ndigest = img_data.get(\"digest\")\n\nprint(\"Image digest:\")\nprint(digest)\n\nif not digest:\n    print(\"ERROR: Image digest not found in report.toml\")\n    exit(1)\n\ndigest = digest.strip()\n\n# ------------------------------------------------------------\n# 1. Write Tekton result\n# ------------------------------------------------------------\n\ntekton_result = \"$(results.APP_IMAGE_DIGEST.path)\"\n\nwith open(tekton_result, \"w\") as f:\n    f.write(digest)\n\nprint(\"\")\nprint(\"Tekton result written:\")\nprint(tekton_result)\n\n# ------------------------------------------------------------\n# 2. Write digest to shared source workspace\n# ------------------------------------------------------------\n\ndigest_file = \"$(workspaces.source.path)/image-digest\"\n\nprint(\"\")\nprint(\"Writing digest file:\")\nprint(digest_file)\n\nwith open(digest_file, \"w\") as f:\n    f.write(digest)\n\n# ------------------------------------------------------------\n# 3. Verify digest file\n# ------------------------------------------------------------\n\nprint(\"\")\nprint(\"======================================\")\nprint(\"Verifying image-digest file\")\nprint(\"======================================\")\n\nif not os.path.isfile(digest_file):\n    print(\"ERROR: Failed to create image-digest file\")\n    exit(1)\n\nwith open(digest_file, \"r\") as f:\n    stored_digest = f.read().strip()\n\nprint(\"File exists: YES\")\nprint(\"File content:\")\nprint(stored_digest)\n\nif stored_digest != digest:\n    print(\"ERROR: Digest mismatch\")\n    exit(1)\n\nprint(\"\")\nprint(\"SUCCESS: image-digest file created successfully\")\nprint(\"Digest:\", stored_digest)\n","volumeMounts":[{"mountPath":"/layers","name":"layers-dir"}]}],"volumes":[{"emptyDir":{},"name":"tekton-home-dir"},{"emptyDir":{},"name":"layers-dir"},{"emptyDir":{},"name":"kaniko-dir"},{"emptyDir":{},"name":"platform-dir"}],"workspaces":[{"description":"Directory where application source is located.","name":"source"},{"description":"Directory where cache is stored (when no cache image is provided).","name":"cache","optional":true},{"description":"Docker registry authentication configuration.","name":"dockerconfig"}]}}
+    tekton.dev/categories: Image Build, Security
+    tekton.dev/displayName: Buildpacks phases
+    tekton.dev/pipelines.minVersion: 0.62.0
+    tekton.dev/platforms: linux/amd64
+    tekton.dev/tags: image-build
+  creationTimestamp: "2026-10-17T22:24:55Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/version: "0.3"
+  name: buildpacks-phases
+  namespace: cicd
+  resourceVersion: "2752632"
+  uid: e7c4b1ea-2030-4e58-a52c-50ef77bb95a9
+spec:
+  description: |-
+    The Buildpacks-Phases task builds source into a container image and pushes it to a registry, using Cloud Native Buildpacks - https://buildpacks.io/. This task separately calls the aspects of the Cloud Native Buildpacks lifecycle, to provide increased security via container isolation.
+    When the builder image includes extensions (= Dockerfiles), then this task will execute them. That allows to by example install packages, rpm, etc and to customize the build process according to your needs.
+    This task supports the Platform spec 0.13: https://github.com/buildpacks/spec/blob/platform/v0.13/platform.md
+  params:
+  - default: ""
+    description: Reference to the current build image in an OCI registry (if used
+      <kaniko-dir> must be provided)
+    name: CNB_BUILD_IMAGE
+    type: string
+  - description: The Builder image which includes the lifecycle tool, the buildpacks
+      and metadata.
+    name: CNB_BUILDER_IMAGE
+    type: string
+  - default: ""
+    description: Reference to a cache image in an OCI registry (if no cache workspace
+      is provided).
+    name: CNB_CACHE_IMAGE
+    type: string
+  - default: []
+    description: Environment variables to set during _build-time_.
+    name: CNB_ENV_VARS
+    type: array
+  - default: silent
+    description: Control the lifecycle's execution according to the mode silent, warn,
+      error for the experimental features.
+    name: CNB_EXPERIMENTAL_MODE
+    type: string
+  - default: ""
+    description: The group ID of the builder image user.
+    name: CNB_GROUP_ID
+    type: string
+  - default: ""
+    description: List of registries separated by a comma having a self-signed certificate
+      where TLS verification will be skipped.
+    name: CNB_INSECURE_REGISTRIES
+    type: string
+  - default: /layers
+    description: Path to layers directory
+    name: CNB_LAYERS_DIR
+    type: string
+  - default: info
+    description: Logging level values info, warning, error, debug
+    name: CNB_LOG_LEVEL
+    type: string
+  - default: "0.13"
+    description: Buildpack Platform API supported by the Tekton task
+    name: CNB_PLATFORM_API_SUPPORTED
+    type: string
+  - default: ""
+    description: User's Buildpack Platform API
+    name: CNB_PLATFORM_API
+    type: string
+  - default: /platform
+    description: Path to the platform directory
+    name: CNB_PLATFORM_DIR
+    type: string
+  - default: ""
+    description: Default process type to set in the exported image
+    name: CNB_PROCESS_TYPE
+    type: string
+  - default: ""
+    description: Reference to an image which is packaging the application runtime
+      to be launched.
+    name: CNB_RUN_IMAGE
+    type: string
+  - default: "false"
+    description: Do not restore SBOM layer from previous image
+    name: CNB_SKIP_LAYERS
+    type: string
+  - default: ""
+    description: The user ID of the builder image user.
+    name: CNB_USER_ID
+    type: string
+  - description: The name of the container image for your application.
+    name: APP_IMAGE
+    type: string
+  - default: ""
+    description: A subpath within the `source` input where the source to build is
+      located.
+    name: SOURCE_SUBPATH
+    type: string
+  - default: ""
+    description: Additional tag to apply to the exported image
+    name: TAGS
+    type: string
+  - default: /tekton/home
+    description: Absolute path to the user's home directory.
+    name: USER_HOME
+    type: string
+  - default: quay.io/halkyonio/skopeo-jq:0.1.3@sha256:1b3d21ad541227dc9d3e793d18cef9eb00a969c0c01eb09cab88997bc63680c6
+    description: Image packaging tools like skopeo and jq to inspect the builder images
+    name: INSPECT_TOOLS_IMAGE
+    type: string
+  results:
+  - description: The digest of the built `APP_IMAGE`.
+    name: APP_IMAGE_DIGEST
+    type: string
+  stepTemplate:
+    computeResources: {}
+    env:
+    - name: CNB_EXPERIMENTAL_MODE
+      value: $(params.CNB_EXPERIMENTAL_MODE)
+    - name: HOME
+      value: $(params.USER_HOME)
+  steps:
+  - computeResources: {}
+    env:
+    - name: PARAM_VERBOSE
+      value: $(params.CNB_LOG_LEVEL)
+    - name: PARAM_BUILDER_IMAGE
+      value: $(params.CNB_BUILDER_IMAGE)
+    - name: PARAM_CNB_PLATFORM_API
+      value: $(params.CNB_PLATFORM_API)
+    - name: PARAM_CNB_PLATFORM_API_SUPPORTED
+      value: $(params.CNB_PLATFORM_API_SUPPORTED)
+    - name: DOCKER_CONFIG
+      value: /tekton/home/.docker
+    image: $(params.INSPECT_TOOLS_IMAGE)
+    name: get-labels-and-env
+    onError: stopAndFail
+    results:
+    - description: UID of the user specified in the Builder image
+      name: UID
+    - description: GID of the user specified in the Builder image
+      name: GID
+    - description: 'Extensions labels: io.buildpacks.extension.layers defined in the
+        Builder image'
+      name: EXTENSION_LABELS
+    - description: The CNB_PLATFORM_API to be used by lifecycle and verified against
+        the one supported by this task
+      name: CNB_PLATFORM_API
+    script: |
+      #!/usr/bin/env bash
+      set -eu
 
+      if [ "${PARAM_VERBOSE}" = "debug" ]; then
+        set -x
+      fi
 
+      echo "Creating the path for docker.."
 
+      mkdir -p /tekton/home/.docker
 
-## vault-agent-init container logs
+      echo "--> Copying dockerconfig credentials: $(workspaces.dockerconfig.path)"
+      ls -Rlrta "$(workspaces.dockerconfig.path)"
 
-2026-08-17T00:57:40.499Z [ERROR] agent.auth.handler: error authenticating: error="Put \"https://secret-store-service.vks-vault-injector.svc.cluster.local:8200/v1/auth/kubernetes-ns01-workload-vsphere-vks1/login\": dial tcp: lookup secret-store-service.vks-vault-injector.svc.cluster.local on 240.1.0.10:53: no such host" backoff=1m33.07s
+      echo "================"
 
+      if [ -f "$(workspaces.dockerconfig.path)/.dockerconfigjson" ]; then
+        cp "$(workspaces.dockerconfig.path)/.dockerconfigjson" "${DOCKER_CONFIG}/config.json"
+      elif [ -f "$(workspaces.dockerconfig.path)/config.json" ]; then
+        cp "$(workspaces.dockerconfig.path)/config.json" "${DOCKER_CONFIG}/config.json"
+      else
+        echo "ERROR: Harbor registry credentials were not mounted."
+        exit 1
+      fi
 
-# deploy stage error
+      echo "# Check if registry creds docker file has been mounted from a secret"
 
-Failed to fetch artifacts. Unable to fetch the given tag for the image. The tag provided for the image may be incorrect.. Unable to fetch the given tag for the image. The tag provided for the image may be incorrect.. Failed to fetch tags for image. Check if the image details are correct. Check if the image exists, the permissions are scoped for the authenticated user & check if the right connector chosen for fetching tags for the image. . Failed to fetch tags for image. Check if the image details are correct. Check if the image exists, the permissions are scoped for the authenticated user & check if the right connector chosen for fetching tags for the image. . Failed to fetch tags for image. Check if the image details are correct. Check if the image exists, the permissions are scoped for the authenticated user & check if the right connector chosen for fetching tags for the image. . Failed to fetch tags for image. Check if the image details are correct. Check if the image exists, the pe..truncated
+      if [[ -f "$HOME/.docker/config.json" ]]; then
+        printf "%s\n" "The docker config.json file exists !"
+      else
+        printf "%s\n" "!!!!! Warning: No registry credentials file exist. So it could be possible that the task will fail due to docker rate limit, etc !!!"
+      fi
 
+      printf "%s\n" "Remove the @sha from the image as not supported by skopeo to inspect an image"
 
+      CLEANED_IMAGE="${PARAM_BUILDER_IMAGE%@*}"
+
+      EXT_LABEL_1="io.buildpacks.extension.layers"
+      EXT_LABEL_2="io.buildpacks.buildpack.order-extensions"
+      BUILDER_LABEL="io.buildpacks.builder.metadata"
+
+      IMG_MANIFEST=$(
+        skopeo inspect \
+          --authfile "$HOME/.docker/config.json" \
+          "docker://${CLEANED_IMAGE}"
+      )
+
+      #
+      # The following test should be reviewed as:
+      #
+      # 1) we get from non ubi images a {} value as you can see hereafter
+      #    "io.buildpacks.extension.layers": "{}",
+      #
+      # 2) Do we have to check the content of this label too ?
+      #    "io.buildpacks.buildpack.order-extensions": "null",
+      #
+
+      IMG_LABELS=$(echo "$IMG_MANIFEST" | jq -e '.Labels')
+
+      if [[ $(echo "$IMG_LABELS" | jq -r '.["'${BUILDER_LABEL}'"]') != "{}" ]]; then
+
+        printf "%s\n" "## The builder image ${PARAM_BUILDER_IMAGE} includes the label: \"${BUILDER_LABEL}\" :"
+
+        builderLabel=$(echo -n "$IMG_LABELS" | jq -r '.["'${BUILDER_LABEL}'"]')
+
+        platforms=(
+          $(echo "$builderLabel" | jq -r '.lifecycle.apis.platform.supported')
+        )
+
+        printf "%s\n" "Lifecycle platforms API supported: ${platforms[@]}"
+
+        CNB_PLATFORM_API=${PARAM_CNB_PLATFORM_API:-$PARAM_CNB_PLATFORM_API_SUPPORTED}
+
+        echo "Platform API selected: $CNB_PLATFORM_API"
+
+        printf "%s\n" "Platform API supported by this task: $PARAM_CNB_PLATFORM_API_SUPPORTED"
+
+        if [[ "${platforms[@]}" =~ "$CNB_PLATFORM_API" &&
+              "$CNB_PLATFORM_API" == "$PARAM_CNB_PLATFORM_API_SUPPORTED" ]]; then
+
+          echo -n "$CNB_PLATFORM_API" > "$(step.results.CNB_PLATFORM_API.path)"
+
+          printf "%s\n" "$CNB_PLATFORM_API is in the list of the platform supported by lifecycle like also this Tekton task :-)"
+
+        else
+
+          echo "$PARAM_CNB_PLATFORM_API is not in the list of the supported platform by lifecycle or is not supported by this tekton task: ${PARAM_CNB_PLATFORM_API_SUPPORTED} !"
+
+          exit 1
+        fi
+      fi
+
+      if [[ $(echo "$IMG_LABELS" | jq -r '.["'${EXT_LABEL_1}'"]') != "{}" ]]; then
+
+        echo "## The builder image ${PARAM_BUILDER_IMAGE} includes some extensions as the extension label \"${EXT_LABEL_1}\" is NOT empty:"
+
+        echo -n "$IMG_LABELS" |
+          jq -r '.["'${EXT_LABEL_1}'"]' |
+          tee "$(step.results.EXTENSION_LABELS.path)"
+
+        echo ""
+
+      else
+
+        echo "## The builder image ${PARAM_BUILDER_IMAGE} dot not include extensions as the extension label \"${EXT_LABEL_1}\" is empty !"
+
+        echo -n "empty" |
+          tee "$(step.results.EXTENSION_LABELS.path)"
+      fi
+
+      CNB_USER_ID=$(
+        echo "$IMG_MANIFEST" |
+          jq -r '.Env' |
+          jq -r '.[] | select(test("^CNB_USER_ID="))' |
+          cut -d '=' -f 2
+      )
+
+      CNB_GROUP_ID=$(
+        echo "$IMG_MANIFEST" |
+          jq -r '.Env' |
+          jq -r '.[] | select(test("^CNB_GROUP_ID="))' |
+          cut -d '=' -f 2
+      )
+
+      echo "## The CNB_USER_ID & CNB_GROUP_ID defined within the builder image: ${PARAM_BUILDER_IMAGE} are:"
+
+      echo -n "$CNB_USER_ID" |
+        tee "$(step.results.UID.path)"
+
+      echo ""
+
+      echo -n "$CNB_GROUP_ID" |
+        tee "$(step.results.GID.path)"
+  - args:
+    - --env-vars
+    - $(params.CNB_ENV_VARS[*])
+    computeResources: {}
+    env:
+    - name: CNB_USER_ID
+      value: $(steps.get-labels-and-env.results.UID)
+    - name: CNB_GROUP_ID
+      value: $(steps.get-labels-and-env.results.GID)
+    image: registry.access.redhat.com/ubi8/ubi-minimal@sha256:b2a1bec3dfbc7a14a1d84d98934dfe8fdde6eb822a211286601cf109cbccb075
+    name: prepare
+    script: |
+      #!/usr/bin/env bash
+      set -eu
+
+      echo "CNB UID: $CNB_USER_ID"
+      echo "CNB GID: $CNB_GROUP_ID"
+
+      if [[ "$(workspaces.cache.bound)" == "true" ]]; then
+        echo "--> Setting permissions on '$(workspaces.cache.path)'..."
+        chown -R "$CNB_USER_ID:$CNB_GROUP_ID" "$(workspaces.cache.path)"
+      fi
+
+      echo "--> Creating .docker folder"
+      mkdir -p "/tekton/home/.docker"
+
+      for path in \
+        "/tekton/home" \
+        "/tekton/home/.docker" \
+        "/tekton/creds" \
+        "/layers" \
+        "$(workspaces.source.path)"; do
+
+        echo "--> Setting permissions on '$path'..."
+        chown -R "$CNB_USER_ID:$CNB_GROUP_ID" "$path"
+      done
+
+      echo "--> Parsing additional configuration..."
+
+      parsing_flag=""
+      envs=()
+
+      for arg in "$@"; do
+
+        if [[ "$arg" == "--env-vars" ]]; then
+          echo "-> Parsing env variables..."
+          parsing_flag="env-vars"
+
+        elif [[ "$parsing_flag" == "env-vars" ]]; then
+          envs+=("$arg")
+        fi
+
+      done
+
+      echo "--> Processing any environment variables..."
+
+      ENV_DIR="/platform/env"
+
+      echo "--> Creating 'env' directory: $ENV_DIR"
+      mkdir -p "$ENV_DIR"
+
+      for env in "${envs[@]}"; do
+
+        IFS='=' read -r key value string <<< "$env"
+
+        if [[ "$key" != "" && "$value" != "" ]]; then
+
+          path="${ENV_DIR}/${key}"
+
+          echo "--> Writing ${path}..."
+
+          echo -n "$value" > "$path"
+        fi
+
+      done
+
+      echo "--> Content of $(params.CNB_PLATFORM_DIR)/env"
+      ls -la "$(params.CNB_PLATFORM_DIR)/env"
+
+      echo "--> Show the project cloned within the workspace ..."
+      ls -la "$(workspaces.source.path)/$(params.SOURCE_SUBPATH)"
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+    - mountPath: $(params.CNB_PLATFORM_DIR)
+      name: platform-dir
+  - args:
+    - -log-level=$(params.CNB_LOG_LEVEL)
+    - -layers=$(params.CNB_LAYERS_DIR)
+    - -run-image=$(params.CNB_RUN_IMAGE)
+    - -cache-image=$(params.CNB_CACHE_IMAGE)
+    - -uid=$(steps.get-labels-and-env.results.UID)
+    - -gid=$(steps.get-labels-and-env.results.GID)
+    - -insecure-registry=$(params.CNB_INSECURE_REGISTRIES)
+    - -tag=$(params.TAGS)
+    - -skip-layers=$(params.CNB_SKIP_LAYERS)
+    - $(params.APP_IMAGE)
+    command:
+    - /cnb/lifecycle/analyzer
+    computeResources: {}
+    env:
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    - name: DOCKER_CONFIG
+      value: /tekton/home/.docker
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: analyze
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+  - args:
+    - -log-level=$(params.CNB_LOG_LEVEL)
+    - -app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)
+    - -group=/layers/group.toml
+    - -plan=/layers/plan.toml
+    - -layers=$(params.CNB_LAYERS_DIR)
+    - -platform=$(params.CNB_PLATFORM_DIR)
+    command:
+    - /cnb/lifecycle/detector
+    computeResources: {}
+    env:
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: detect
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+    - mountPath: $(params.CNB_PLATFORM_DIR)
+      name: platform-dir
+    - mountPath: /tekton/home
+      name: tekton-home-dir
+  - computeResources: {}
+    env:
+    - name: UID
+      value: $(steps.get-labels-and-env.results.UID)
+    - name: GID
+      value: $(steps.get-labels-and-env.results.GID)
+    - name: CNB_LOG_LEVEL
+      value: $(params.CNB_LOG_LEVEL)
+    - name: CNB_BUILD_IMAGE
+      value: $(params.CNB_BUILD_IMAGE)
+    - name: CNB_BUILDER_IMAGE
+      value: $(params.CNB_BUILDER_IMAGE)
+    - name: CNB_CACHE_IMAGE
+      value: $(params.CNB_CACHE_IMAGE)
+    - name: CNB_INSECURE_REGISTRIES
+      value: $(params.CNB_INSECURE_REGISTRIES)
+    - name: CNB_SKIP_LAYERS
+      value: $(params.CNB_SKIP_LAYERS)
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: restore
+    script: |
+      #!/usr/bin/env bash
+
+      export BUILD_IMAGE=${CNB_BUILD_IMAGE:-${CNB_BUILDER_IMAGE}}
+
+      /cnb/lifecycle/restorer \
+        -log-level=${CNB_LOG_LEVEL} \
+        -build-image=${BUILD_IMAGE} \
+        -group=/layers/group.toml \
+        -layers=${CNB_LAYERS_DIR} \
+        -cache-dir=$(workspaces.cache.path) \
+        -cache-image=${CNB_CACHE_IMAGE} \
+        -uid=${UID} \
+        -gid=${GID} \
+        -insecure-registry=${CNB_INSECURE_REGISTRIES} \
+        -skip-layers=${CNB_SKIP_LAYERS}
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+    - mountPath: /kaniko
+      name: kaniko-dir
+  - args:
+    - -log-level=$(params.CNB_LOG_LEVEL)
+    - -app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)
+    - -generated=/layers/generated
+    - -uid=$(steps.get-labels-and-env.results.UID)
+    - -gid=$(steps.get-labels-and-env.results.GID)
+    - -platform=$(params.CNB_PLATFORM_DIR)
+    command:
+    - /cnb/lifecycle/extender
+    computeResources: {}
+    env:
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: extender
+    securityContext:
+      capabilities:
+        add:
+        - SYS_ADMIN
+        - SETFCAP
+      runAsGroup: 0
+      runAsUser: 0
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+    - mountPath: /kaniko
+      name: kaniko-dir
+    - mountPath: /tekton/home
+      name: tekton-home-dir
+    - mountPath: $(params.CNB_PLATFORM_DIR)
+      name: platform-dir
+    when:
+    - input: $(steps.get-labels-and-env.results.EXTENSION_LABELS)
+      operator: notin
+      values:
+      - empty
+  - args:
+    - -log-level=$(params.CNB_LOG_LEVEL)
+    - -app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)
+    - -layers=$(params.CNB_LAYERS_DIR)
+    - -group=/layers/group.toml
+    - -plan=/layers/plan.toml
+    - -platform=$(params.CNB_PLATFORM_DIR)
+    command:
+    - /cnb/lifecycle/builder
+    computeResources: {}
+    env:
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: build
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+    - mountPath: $(params.CNB_PLATFORM_DIR)
+      name: platform-dir
+    - mountPath: /tekton/home
+      name: tekton-home-dir
+    when:
+    - input: $(steps.get-labels-and-env.results.EXTENSION_LABELS)
+      operator: in
+      values:
+      - empty
+  - args:
+    - -log-level=$(params.CNB_LOG_LEVEL)
+    - -app=$(workspaces.source.path)/$(params.SOURCE_SUBPATH)
+    - -layers=$(params.CNB_LAYERS_DIR)
+    - -group=/layers/group.toml
+    - -cache-dir=$(workspaces.cache.path)
+    - -cache-image=$(params.CNB_CACHE_IMAGE)
+    - -report=/layers/report.toml
+    - -process-type=$(params.CNB_PROCESS_TYPE)
+    - -uid=$(steps.get-labels-and-env.results.UID)
+    - -gid=$(steps.get-labels-and-env.results.GID)
+    - -insecure-registry=$(params.CNB_INSECURE_REGISTRIES)
+    - $(params.APP_IMAGE)
+    command:
+    - /cnb/lifecycle/exporter
+    computeResources: {}
+    env:
+    - name: CNB_PLATFORM_API
+      value: $(steps.get-labels-and-env.results.CNB_PLATFORM_API)
+    - name: DOCKER_CONFIG
+      value: /tekton/home/.docker
+    image: $(params.CNB_BUILDER_IMAGE)
+    imagePullPolicy: Always
+    name: export
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+  - computeResources: {}
+    image: registry.access.redhat.com/ubi8/python-311@sha256:43605cb2491ef2297a7acf4b4bf0b7f54f0c91b96daf12ae41c49cc7f192b153
+    name: results
+    script: |
+      #!/usr/bin/env python3
+
+      import tomllib
+      import os
+
+      print("======================================")
+      print("Reading image digest from report.toml")
+      print("======================================")
+
+      with open("/layers/report.toml", "rb") as f:
+          data = tomllib.load(f)
+
+      img_data = data.get("image", {})
+
+      digest = img_data.get("digest")
+
+      print("Image digest:")
+      print(digest)
+
+      if not digest:
+          print("ERROR: Image digest not found in report.toml")
+          exit(1)
+
+      digest = digest.strip()
+
+      # ------------------------------------------------------------
+      # 1. Write Tekton result
+      # ------------------------------------------------------------
+
+      tekton_result = "$(results.APP_IMAGE_DIGEST.path)"
+
+      with open(tekton_result, "w") as f:
+          f.write(digest)
+
+      print("")
+      print("Tekton result written:")
+      print(tekton_result)
+
+      # ------------------------------------------------------------
+      # 2. Write digest to shared source workspace
+      # ------------------------------------------------------------
+
+      digest_file = "$(workspaces.source.path)/image-digest"
+
+      print("")
+      print("Writing digest file:")
+      print(digest_file)
+
+      with open(digest_file, "w") as f:
+          f.write(digest)
+
+      # ------------------------------------------------------------
+      # 3. Verify digest file
+      # ------------------------------------------------------------
+
+      print("")
+      print("======================================")
+      print("Verifying image-digest file")
+      print("======================================")
+
+      if not os.path.isfile(digest_file):
+          print("ERROR: Failed to create image-digest file")
+          exit(1)
+
+      with open(digest_file, "r") as f:
+          stored_digest = f.read().strip()
+
+      print("File exists: YES")
+      print("File content:")
+      print(stored_digest)
+
+      if stored_digest != digest:
+          print("ERROR: Digest mismatch")
+          exit(1)
+
+      print("")
+      print("SUCCESS: image-digest file created successfully")
+      print("Digest:", stored_digest)
+    volumeMounts:
+    - mountPath: /layers
+      name: layers-dir
+  volumes:
+  - emptyDir: {}
+    name: tekton-home-dir
+  - emptyDir: {}
+    name: layers-dir
+  - emptyDir: {}
+    name: kaniko-dir
+  - emptyDir: {}
+    name: platform-dir
+  workspaces:
+  - description: Directory where application source is located.
+    name: source
+  - description: Directory where cache is stored (when no cache image is provided).
+    name: cache
+    optional: true
+  - description: Docker registry authentication configuration.
+    name: dockerconfig
